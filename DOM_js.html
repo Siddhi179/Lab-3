@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Page Example</title>
+    <style>
+        .dynamic-text {
+            color: blue;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .dynamic-image {
+            width: 200px;
+            height: auto;
+        }
+        #container {
+            position: relative;
+        }
+        #move-me {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            background-color: lightgrey;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="main-title">Welcome to My Dynamic Web Page</h1>
+
+    <div class="dynamic-text" id="text-element">
+        This text will be changed dynamically.
+    </div>
+
+    <img id="dynamic-image" class="dynamic-image" src=" https://travelwandergrow.com/wp-content/uploads/2018/01/AdobeStock_264773707-scaled.jpeg" alt="Placeholder Image">
+
+    <button id="change-text-btn">Change Text</button>
+    <button id="change-image-btn">Change Image</button>
+    <button id="add-text-node-btn">Add Text Node</button>
+    <button id="delete-node-btn">Delete Node</button>
+
+    <div id="container">
+        <div id="move-me">Move me around!</div>
+    </div>
+
+    <script>
+        // Access elements
+        const mainTitle = document.getElementById('main-title');
+        const textElement = document.getElementById('text-element');
+        const dynamicImage = document.getElementById('dynamic-image');
+        const changeTextBtn = document.getElementById('change-text-btn');
+        const changeImageBtn = document.getElementById('change-image-btn');
+        const addTextNodeBtn = document.getElementById('add-text-node-btn');
+        const deleteNodeBtn = document.getElementById('delete-node-btn');
+        const moveMe = document.getElementById('move-me');
+
+        // Change text content
+        changeTextBtn.addEventListener('click', () => {
+            textElement.innerHTML = 'The text has been changed!';
+        });
+
+        // Change image source
+        changeImageBtn.addEventListener('click', () => {
+            dynamicImage.src = 'https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/f6/2d/d1.jpg ';
+        });
+
+        // Add a text node
+        addTextNodeBtn.addEventListener('click', () => {
+            const newTextNode = document.createTextNode('New text node added. ');
+            textElement.appendChild(newTextNode);
+        });
+
+        // Delete a node
+        deleteNodeBtn.addEventListener('click', () => {
+            if (textElement.lastChild) {
+                textElement.removeChild(textElement.lastChild);
+            }
+        });
+
+        // Change CSS properties
+        document.getElementById('change-css-btn').addEventListener('click', () => {
+            moveMe.style.color = 'red';
+            moveMe.style.top = '200px';
+            moveMe.style.left = '200px';
+        });
+    </script>
+
+</body>
+</html>
